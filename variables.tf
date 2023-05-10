@@ -22,7 +22,3 @@ variable "subnet_public_ids" {
   description = "List of the Public Subnet IDs."
   type        = list(any)
 }
-variable "s3_access_log" {
-  description = "The S3 bucket to store the access-log"
-  type        = string
-}

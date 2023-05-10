@@ -28,10 +28,6 @@ resource "aws_lb" "alb" {
   subnets                    = toset(var.subnet_public_ids)
   preserve_host_header       = true
   enable_deletion_protection = false
-  access_logs {
-    bucket  = var.s3_access_log
-    enabled = true
-  }
   tags = local.common_tags
 }
 
