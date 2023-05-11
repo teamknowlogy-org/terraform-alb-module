@@ -70,3 +70,8 @@ resource "aws_lb_listener" "https_listener" {
     }
   }
 }
+
+data "aws_acm_certificate" "this" {
+  domain   = "*.${var.route53_domain}"
+  statuses = ["ISSUED"]
+}
