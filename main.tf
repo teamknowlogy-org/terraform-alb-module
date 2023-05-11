@@ -15,7 +15,11 @@ resource "aws_security_group" "alb_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = local.common_tags
+  tags = {
+    environment = var.environment
+    project     = var.project
+    module      = var.module
+  }
 }
 
 # Load Balancer
@@ -28,7 +32,11 @@ resource "aws_lb" "alb" {
   subnets                    = toset(var.subnet_public_ids)
   preserve_host_header       = true
   enable_deletion_protection = false
-  tags = local.common_tags
+  tags = {
+    environment = var.environment
+    project     = var.project
+    module      = var.module
+  }
 }
 
 # Load Balancer: HTTP Listener
