@@ -18,7 +18,7 @@ variable "subnet_public_ids" {
   description = "List of the Public Subnet IDs."
   type        = list(any)
 }
-variable "route53_domain" {
-  description = "Domain of ACM certificate"
-  type = string 
-} 
+# variable "route53_domain" {
+#   description = "Domain of ACM certificate"
+#   type = string 
+# }

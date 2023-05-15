@@ -18,7 +18,7 @@ output "alb_name" {
   value       = aws_lb.alb.name
 }
 
-output "listener_arn" {
-  description = "The ARN of the HTTPs Listener"
-  value       = aws_lb_listener.https_listener.arn
-}
+# output "listener_arn" {
+#   description = "The ARN of the HTTPs Listener"
+#   value       = aws_lb_listener.https_listener.arn
+# }
