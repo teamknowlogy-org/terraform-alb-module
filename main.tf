@@ -40,38 +40,38 @@ resource "aws_lb" "alb" {
 }
 
 # Load Balancer: HTTP Listener
-resource "aws_lb_listener" "http_listener" {
-  load_balancer_arn = aws_lb.alb.arn
-  port              = "80"
-  protocol          = "HTTP"
-  default_action {
-    type = "redirect"
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
+# resource "aws_lb_listener" "http_listener" {
+#   load_balancer_arn = aws_lb.alb.arn
+#   port              = "80"
+#   protocol          = "HTTP"
+#   default_action {
+#     type = "redirect"
+#     redirect {
+#       port        = "443"
+#       protocol    = "HTTPS"
+#       status_code = "HTTP_301"
+#     }
+#   }
+# }
 
 # Load Balancer: HTTPS Listener
-resource "aws_lb_listener" "https_listener" {
-  load_balancer_arn = aws_lb.alb.arn
-  port              = "443"
-  protocol          = "HTTPS"
-  certificate_arn   = data.aws_acm_certificate.this.arn
-  ssl_policy        = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
-  default_action {
-    type = "fixed-response"
-    fixed_response {
-      content_type = "text/plain"
-      message_body = "Nothing."
-      status_code  = "200"
-    }
-  }
-}
+# resource "aws_lb_listener" "https_listener" {
+#   load_balancer_arn = aws_lb.alb.arn
+#   port              = "443"
+#   protocol          = "HTTPS"
+#   certificate_arn   = data.aws_acm_certificate.this.arn
+#   ssl_policy        = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
+#   default_action {
+#     type = "fixed-response"
+#     fixed_response {
+#       content_type = "text/plain"
+#       message_body = "Nothing."
+#       status_code  = "200"
+#     }
+#   }
+# }
 
-data "aws_acm_certificate" "this" {
-  domain   = "*.${var.route53_domain}"
-  statuses = ["ISSUED"]
-}
+# data "aws_acm_certificate" "this" {
+#   domain   = "*.${var.route53_domain}"
+#   statuses = ["ISSUED"]
+# }
